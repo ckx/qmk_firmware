@@ -54,7 +54,7 @@ const key_override_t ko_shift_8 = ko_make_basic(MOD_MASK_SHIFT, KC_8, KC_LPRN);
 const key_override_t ko_shift_9 = ko_make_basic(MOD_MASK_SHIFT, KC_9, KC_RPRN);
 const key_override_t ko_shift_0 = ko_make_basic(MOD_MASK_SHIFT, KC_0, KC_UNDS);
 const key_override_t ko_shift_minus = ko_make_basic(MOD_MASK_SHIFT, KC_MINS, KC_EQL);
-const key_override_t ko_shift_grave = ko_make_basic(MOD_MASK_SHIFT, KC_GRV, KC_AT);
+const key_override_t ko_shift_at = ko_make_basic(MOD_MASK_SHIFT, KC_AT, KC_GRV);
 const key_override_t ko_shift_ins = ko_make_basic(MOD_MASK_SHIFT, KC_INS, KC_PAUS);
 const key_override_t ko_shift_del = ko_make_basic(MOD_MASK_SHIFT, KC_DEL, KC_SCRL);
 const key_override_t ko_shift_semicolon = ko_make_basic(MOD_MASK_SHIFT, KC_SCLN, KC_PLUS);
@@ -71,7 +71,7 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &ko_shift_9,
     &ko_shift_0,
     &ko_shift_minus,
-    &ko_shift_grave,
+    &ko_shift_at,
     &ko_shift_ins,
     &ko_shift_del,
     &ko_shift_semicolon,
@@ -122,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Keymap (Base Layer) Default Layer
    * ,---------------------------------------------------------------.
-   * |Esc| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | - | ^ | ` |Bck|Ins|
+   * |Esc| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | - | ^ | @ |Bck|Ins|
    * |----------------------------------------------------------------|
    * |Tab  | q | w | e | r | t | y | u | i | o | p | [ | ] |  \   |Del|
    * |----------------------------------------------------------------|
@@ -136,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Keymap (Shift Layer) Default Layer
    * ,----------------------------------------------------------------.
-   * | ~ | ! | " | # | $ | % | & | ' | ( | ) | _ | = | ^ | @ |Bck|Paus|
+   * | ~ | ! | " | # | $ | % | & | ' | ( | ) | _ | = | ^ | ` |Bck|Paus|
    * |----------------------------------------------------------------|
    * |Tab  | Q | W | E | R | T | Y | U | I | O | P | { | } |Pipe |Scrl|
    * |----------------------------------------------------------------|
@@ -150,7 +150,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Unshifted default layout
 [0] = LAYOUT_all(
-  KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_CIRC, KC_GRV, KC_BSPC, KC_INS,\
+  KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_CIRC, KC_AT, KC_BSPC, KC_INS,\
   KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS, KC_DEL,\
   M_HNZN_TGL, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_COLN, KC_ENT, KC_PGUP,\
   KC_LSFT, KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_UP, KC_PGDN,\
