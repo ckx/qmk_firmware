@@ -18,6 +18,6 @@
 
 // place overrides here
 
-#define LEADER_TIMEOUT 300
+//#define LEADER_TIMEOUT 300
 #define DYNAMIC_MACRO_SIZE 256
-#define UNICODE_ENABLE
+#define UNICODE_SELECTED_MODES UNICODE_MODE_LINUX
