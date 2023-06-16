@@ -1,4 +1,4 @@
-/* Copyright 2018 'mechmerlin'
+/* Copyright 2022 DZTECH <moyi4681@live.cn>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,12 +13,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #include QMK_KEYBOARD_H
 
 #define EMDASH 0x2014 // —
 #define COMET 0x2604 // ☄
 #define SHINE 0x23E3 // ⏣
 #define ARROW 0x27B3 // ➳
+
+enum dz65rgb_layers {
+	_MAIN,
+	_FNC
+};
 
 // 1. マクロ用のキーコード名の宣言
 // https://www.taneyats.com/entry/qmk-ime-toggle
@@ -55,8 +61,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 };
 
-
-
 // key overrides
 const key_override_t ko_shift_esc = ko_make_basic(MOD_MASK_SHIFT, KC_ESC, KC_TILD);
 const key_override_t ko_shift_2 = ko_make_basic(MOD_MASK_SHIFT, KC_2, KC_DQT);
@@ -72,6 +76,7 @@ const key_override_t ko_shift_semicolon = ko_make_basic(MOD_MASK_SHIFT, KC_SCLN,
 const key_override_t ko_shift_colon = ko_make_basic(MOD_MASK_SHIFT, KC_COLN, KC_ASTR);
 const key_override_t ko_shift_pgup = ko_make_basic(MOD_MASK_SHIFT, KC_PGUP, KC_HOME);
 const key_override_t ko_shift_pgdn = ko_make_basic(MOD_MASK_SHIFT, KC_PGDN, KC_END);
+const key_override_t ko_shift_circ = ko_make_basic(MOD_MASK_SHIFT, KC_CIRC, KC_AT);
 
 const key_override_t **key_overrides = (const key_override_t *[]){
     &ko_shift_esc,
@@ -88,23 +93,32 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &ko_shift_colon,
     &ko_shift_pgup,
     &ko_shift_pgdn,
+	&ko_shift_circ,
     NULL
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
-// Default layout
+	// Default layout
 // NOTE: some shifted keys are overridden above.
-[0] = LAYOUT_all(
-  KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINUS, KC_CIRC, KC_AT, KC_BSPC, KC_INS,\
+ [_MAIN] = LAYOUT_65_ansi(
+  KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINUS, KC_CIRC, KC_BSPC, KC_INS,\
   KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS, KC_DEL,\
   M_HNZN_TGL, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_COLN, KC_ENT, KC_PGUP,\
-  KC_LSFT, KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_UP, KC_PGDN,\
-  KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, MO(1), DM_PLY1, DM_RSTP, KC_NO, DM_REC1, KC_LEFT, KC_DOWN, KC_RGHT),
+  KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_UP, KC_PGDN,\
+  KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, MO(1), DM_PLY1, DM_RSTP, KC_LEFT, KC_DOWN, KC_RGHT
+  ),
+  [1] = LAYOUT_65_ansi(
+  KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, UC(EMDASH), KC_INS,\
+  KC_CAPS, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_PSCR, KC_LBRC, KC_RBRC, KC_BSLS, KC_DEL,\
+  KC_GRAVE, KC_A, UC(SHINE), KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_COLN, KC_ENT, KC_MPLY,\
+  KC_LSFT, KC_Z, KC_X, UC(COMET), KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_VOLU, KC_MUTE,\
+  KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, MO(1), DM_REC1, DM_RSTP, KC_BRID, KC_VOLD, KC_BRIU
+    ),
+ };
 
   /* Keymap (Base Layer) Default Layer
    * ,---------------------------------------------------------------.
-   * |Esc| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | - | ^ | @ |Bck|Ins|
+   * |Esc| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | - | ^ |   Bck  |Ins|
    * |----------------------------------------------------------------|
    * |Tab  | q | w | e | r | t | y | u | i | o | p | [ | ] |  \   |Del|
    * |----------------------------------------------------------------|
@@ -112,13 +126,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |----------------------------------------------------------------|
    * |LShift | z | x | c | v | b | n | m | , | . | / |RShift  |Up|PgDn|
    * |----------------------------------------------------------------|
-   * |Ctrl|Meta|Alt| Space   | MO1 |   Fn2    | Fn3 | Fn4 |Lef|Dow|Rght|
+   * |Ctrl|Meta|Alt|        Space      | Fn1 | Fn2 | Fn3 |Lef|Dow|Rght|
    * `----------------------------------------------------------------'
 */
 
 /* Keymap (Base Layer) Shifted
    * ,----------------------------------------------------------------.
-   * | ~ | ! | " | # | $ | % | & | ' | ( | ) | _ | = | ^ | @ |Bck|Paus|
+   * | ~ | ! | " | # | $ | % | & | ' | ( | ) | _ | = | ^ |  Bck | Paus|
    * |----------------------------------------------------------------|
    * |Tab  | Q | W | E | R | T | Y | U | I | O | P | { | } |Pipe |Scrl|
    * |----------------------------------------------------------------|
@@ -126,23 +140,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |----------------------------------------------------------------|
    * |LShift | Z | X | C | V | B | N | M | < | > | ? |RShift  |Up|End |
    * |----------------------------------------------------------------|
-   * |Ctrl|Meta|Alt| Space   | MO1 |   MO2   | MO3 | MO4 |Lef|Dow|Rght|
+   * |Ctrl|Meta|Alt|        Space      | Fn1 | Fn2 | Fn3 |Lef|Dow|Rght|
    * `----------------------------------------------------------------'
 */
-
-
-// MO(1) -- Fn keys and custom stuff.
-[1] = LAYOUT_all(
-  KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, UC(EMDASH), KC_BSPC, KC_INS,\
-  KC_CAPS, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_PSCR, KC_LBRC, KC_RBRC, KC_BSLS, KC_DEL,\
-  KC_GRAVE, KC_A, UC(SHINE), KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_COLN, KC_ENT, KC_MPLY,\
-  KC_LSFT, KC_NO, KC_Z, KC_X, UC(COMET), KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_VOLU, KC_MUTE,\
-  KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, MO(1), DM_PLY2, DM_RSTP, KC_NO, DM_REC2, KC_BRID, KC_VOLD, KC_BRIU),
-};
-
-/* Keymap (MO1 Layer) Fn Layer
+  
+  /* Keymap (MO1 Layer) Fn Layer
    * ,----------------------------------------------------------------.
-   * | ~ | F1 | F2 | F3 | F4 | F5 | F6 | F7 | F8 | F9 | F10 | F11 | F12 | — |Bck|Ins||
+   * | ~ | F1 | F2 | F3 | F4 | F5 | F6 | F7 | F8 | F9 | F10 | F11 | F12 | — |Ins||
    * |----------------------------------------------------------------|
    * |Caps | q | w | e | r | t | y | u | i | o | p | [ | ] |  \   |Del|
    * |----------------------------------------------------------------|
@@ -153,14 +157,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |Ctrl|Meta|Alt| Space   | MO1 |   Fn2    | Fn3 | Fn4 |BrightDown|Vol↓|BrightDown|
    * `----------------------------------------------------------------'
 */
-
-// void matrix_init_user(void) {
-// }
-
-// void matrix_scan_user(void) {
-
-// }
-
-// void led_set_user(uint8_t usb_led) {
-
-// }
