@@ -139,11 +139,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Keymap (MO1 Layer) Fn Layer
    * ,----------------------------------------------------------------.
-   * | Esc | F1 | F2 | F3 | F4 | F5 | F6 | F7 | F8 | F9 | F10 | F11 | F12 | — |Bck|Ins|
+   * | Caps | F1 | F2 | F3 | F4 | F5 | F6 | F7 | F8 | F9 | F10 | F11 | F12 | — |Bck|Ins|
    * |----------------------------------------------------------------|
-   * | Caps |:q!|:wq!| e |M+S+r| t | y | u | i | o |PrSc| [ | ] |  \   |Del|
+   * | ` |:q!|:wq!| e |M+S+r| t | y | u | i | o |PrSc| [ | ] |  \   |Del|
    * |----------------------------------------------------------------|
-   * | IME |C+A,Bksp| s | d | f | ` | h | j | k | l | ; | : |  Enter  |Play|
+   * | IME |C+A,Bksp| s | d | f | g | h | j | k | l | ; | : |  Enter  |Play|
    * |----------------------------------------------------------------|
    * | ` |No |C+S+Z|C+S+X|C+S+C|C+S+V| b | n | m | , | . | / |RShift|Vol+|Mute|
    * |----------------------------------------------------------------|
@@ -151,9 +151,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `----------------------------------------------------------------'
 */
 [1] = LAYOUT_all(
-  KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, UC(EMDASH), KC_BSPC, KC_INS,\
-  KC_CAPS, VIM_Q_FORCE, VIM_WQ_FORCE, KC_E, G(S(KC_R)), KC_T, KC_Y, KC_U, KC_I, KC_O, KC_PSCR, KC_LBRC, KC_RBRC, KC_BSLS, KC_DEL,\
-  M_HNZN_TGL, LINE_CLEAR_BACKSPACE, KC_S, KC_D, KC_F, KC_GRAVE, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_COLN, KC_ENT, KC_MPLY,\
+  KC_CAPS, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, UC(EMDASH), KC_BSPC, KC_INS,\
+  KC_GRAVE, VIM_Q_FORCE, VIM_WQ_FORCE, KC_E, G(S(KC_R)), KC_T, KC_Y, KC_U, KC_I, KC_O, KC_PSCR, KC_LBRC, KC_RBRC, KC_BSLS, KC_DEL,\
+  M_HNZN_TGL, LINE_CLEAR_BACKSPACE, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_COLN, KC_ENT, KC_MPLY,\
   KC_LSFT, KC_NO, C(S(KC_Z)), C(S(KC_X)), C(S(KC_C)), C(S(KC_V)), KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_VOLU, KC_MUTE,\
   KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, MO(1), DM_PLY1, DM_RSTP, KC_NO, DM_REC1, KC_LEFT, KC_VOLD, KC_RGHT),
 };

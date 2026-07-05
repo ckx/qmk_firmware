@@ -7,6 +7,7 @@
 #define DEFAULT_DEBOUNCE 5
 #define CHATTER_DEBOUNCE 15
 #define FIVE_KEY_DEBOUNCE 20
+#define PLUS_KEY_DEBOUNCE 10
 
 static uint8_t      counters[MATRIX_ROWS][MATRIX_COLS];
 static fast_timer_t last_time;
@@ -22,6 +23,10 @@ void debounce_free(void) {}
 static uint8_t debounce_time_for_key(uint8_t row, uint8_t col) {
     if (row == 0 && col == 5) { // 5
         return FIVE_KEY_DEBOUNCE;
+    }
+
+    if (row == 2 && col == 11) { // + (; key)
+        return PLUS_KEY_DEBOUNCE;
     }
 
     if ((row == 0 && col == 4) || // 4
