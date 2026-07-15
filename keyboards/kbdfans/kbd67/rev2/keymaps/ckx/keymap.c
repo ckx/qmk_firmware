@@ -107,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |----------------------------------------------------------------|
    * |Tab  | q | w | e | r | t | y | u | i | o | p | [ | ] |  \   |Del|
    * |----------------------------------------------------------------|
-   * | M+H | a | s | d | f | g | h | j | k | l | ; | : | Return  |PgUp|
+   * | F19 | a | s | d | f | g | h | j | k | l | ; | : | Return  |PgUp|
    * |----------------------------------------------------------------|
    * |LShift | z | x | c | v | b | n | m | , | . | / |RShift  |Up|PgDn|
    * |----------------------------------------------------------------|
@@ -121,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |----------------------------------------------------------------|
    * |Tab  | Q | W | E | R | T | Y | U | I | O | P | { | } |Pipe |Scrl|
    * |----------------------------------------------------------------|
-   * | M+H | A | S | D | F | G | H | J | K | L | + | * | Return  |Home|
+   * | F19 | A | S | D | F | G | H | J | K | L | + | * | Return  |Home|
    * |----------------------------------------------------------------|
    * |LShift | Z | X | C | V | B | N | M | < | > | ? |RShift  |Up|End |
    * |----------------------------------------------------------------|
@@ -133,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [0] = LAYOUT_all(
   KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINUS, KC_CIRC, KC_AT, KC_BSPC, KC_INS,\
   KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS, KC_DEL,\
-  G(KC_H), KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_COLN, KC_ENT, KC_PGUP,\
+  KC_F19, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_COLN, KC_ENT, KC_PGUP,\
   KC_LSFT, KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_UP, KC_PGDN,\
   KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, MO(1), KC_DOT, G(KC_F), KC_NO, G(KC_G), KC_LEFT, KC_DOWN, KC_RGHT),
 
@@ -147,7 +147,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |----------------------------------------------------------------|
    * | ` |No |C+S+Z|C+S+X|C+S+C|C+S+V| b | n | m | , | . | / |RShift|Vol+|Mute|
    * |----------------------------------------------------------------|
-   * |Ctrl|Meta|Alt| Space   | MO1 | . | Rec1 | No | Stop |Lef|Vol-|Rght|
+   * |Ctrl|Meta|Alt| F15     | MO1 | . | Rec1 | No | Stop |Lef|Vol-|Rght|
    * `----------------------------------------------------------------'
 */
 [1] = LAYOUT_all(
@@ -155,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_GRAVE, VIM_Q_FORCE, VIM_WQ_FORCE, KC_E, G(S(KC_R)), KC_T, KC_Y, KC_U, KC_I, KC_O, KC_PSCR, KC_LBRC, KC_RBRC, KC_BSLS, KC_DEL,\
   M_HNZN_TGL, LINE_CLEAR_BACKSPACE, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_COLN, KC_ENT, KC_MPLY,\
   KC_LSFT, KC_NO, C(S(KC_Z)), C(S(KC_X)), C(S(KC_C)), C(S(KC_V)), KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_VOLU, KC_MUTE,\
-  KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, MO(1), DM_PLY1, DM_RSTP, KC_NO, DM_REC1, KC_LEFT, KC_VOLD, KC_RGHT),
+  KC_LCTL, KC_LGUI, KC_LALT, KC_F15, MO(1), DM_PLY1, DM_RSTP, KC_NO, DM_REC1, KC_LEFT, KC_VOLD, KC_RGHT),
 };
 
 
